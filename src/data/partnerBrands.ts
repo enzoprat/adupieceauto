@@ -84,7 +84,6 @@ export const brandLogos: Record<string, string> = {
   Bosch: "bosch.png",
   TRW: "trw.png",
   Brembo: "brembo.png",
-  Ferodo: "ferodo.png",
   SKF: "skf.png",
   Valeo: "valeo.svg",
   Osram: "osram.png",
