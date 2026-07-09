@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { mainNav, primaryCta } from "@/data/navigation";
 import { site } from "@/data/site";
@@ -8,6 +9,11 @@ import { Icon } from "@/components/ui/Icon";
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -35,8 +41,10 @@ export function MobileMenu() {
         </svg>
       </button>
 
-      {open && (
-        <div className="fixed inset-0 z-[60] flex flex-col bg-ink/98 backdrop-blur-sm">
+      {mounted &&
+        open &&
+        createPortal(
+          <div className="fixed inset-0 z-[60] flex flex-col bg-black">
           <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
             <span className="font-display text-base font-extrabold tracking-tightest text-paper">
               Menu
@@ -89,8 +97,9 @@ export function MobileMenu() {
               {site.phone.display}
             </a>
           </div>
-        </div>
-      )}
+        </div>,
+          document.body
+        )}
     </div>
   );
 }

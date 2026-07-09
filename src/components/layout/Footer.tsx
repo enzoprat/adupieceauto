@@ -6,7 +6,7 @@ import { Icon } from "@/components/ui/Icon";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-ink-800">
+    <footer className="border-t border-white/10 bg-black">
       <div className="mx-auto grid max-w-content gap-10 px-5 py-14 sm:px-6 lg:grid-cols-[1.4fr_1fr_1fr] lg:px-8">
         <div className="space-y-4">
           <Logo />
