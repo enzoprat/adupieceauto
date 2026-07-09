@@ -13,14 +13,14 @@ type PartRequestFormProps = {
 };
 
 const urgencyOptions = [
-  { value: "aujourdhui", label: "Aujourd'hui" },
-  { value: "24h", label: "Sous 24h" },
-  { value: "cette-semaine", label: "Cette semaine" },
+  { value: "aujourdhui", label: "Aujourd'hui", hint: "Urgent" },
+  { value: "24h", label: "Sous 24h", hint: "Prioritaire" },
+  { value: "cette-semaine", label: "Cette semaine", hint: "Planifié" },
 ];
 
 function defaultMessage(categoryTitle?: string) {
   if (!categoryTitle) return "";
-  return `Bonjour, je souhaite obtenir un prix et une disponibilité pour une pièce de la catégorie ${categoryTitle}.`;
+  return `Bonjour, je souhaite un prix et une disponibilité pour une pièce de la catégorie ${categoryTitle}.`;
 }
 
 export function PartRequestForm({
@@ -34,9 +34,8 @@ export function PartRequestForm({
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [category, setCategory] = useState(initialCategory?.title ?? "");
-  const [message, setMessage] = useState(
-    defaultMessage(initialCategory?.title)
-  );
+  const [message, setMessage] = useState(defaultMessage(initialCategory?.title));
+  const [advancedOpen, setAdvancedOpen] = useState(Boolean(initialCategory));
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -46,7 +45,6 @@ export function PartRequestForm({
     const form = e.currentTarget;
     const fd = new FormData(form);
 
-    // Honeypot anti-spam
     if (fd.get("company_website")) {
       setStatus("success");
       form.reset();
@@ -54,8 +52,6 @@ export function PartRequestForm({
     }
 
     const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
-
-    // Sans clé configurée : succès simulé pour tester l'interface (preview).
     if (!accessKey) {
       setStatus("success");
       form.reset();
@@ -88,10 +84,7 @@ export function PartRequestForm({
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(payload),
       });
       const json = await res.json();
@@ -112,23 +105,23 @@ export function PartRequestForm({
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-racing/30 bg-ink-700 p-8 text-center">
-        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border-2 border-racing text-racing">
-          <Icon name="check" className="h-7 w-7" />
+      <div className="rounded-3xl border border-avail/30 bg-ink-800 p-8 text-center sm:p-10">
+        <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border-2 border-avail text-avail">
+          <Icon name="check" className="h-8 w-8" />
         </span>
-        <h3 className="mt-5 font-tight text-xl font-bold text-white">
-          Demande envoyée
+        <h3 className="mt-6 font-display text-2xl font-bold text-paper">
+          Demande reçue.
         </h3>
-        <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-mute">
-          Merci, votre demande a bien été transmise. Notre équipe vérifie le prix et la
-          disponibilité, et revient vers vous rapidement. Pour une urgence, appelez-nous
-          directement.
+        <p className="mx-auto mt-3 max-w-md text-[15px] leading-relaxed text-metal">
+          On vérifie la référence, le prix et la disponibilité, puis on revient vers
+          vous rapidement. Rien n&apos;est commandé sans votre confirmation. Pour une
+          urgence, appelez directement.
         </p>
         <a
           href={site.phone.href}
-          className="mt-5 inline-flex items-center gap-2 rounded-md border border-white/15 px-5 py-2.5 text-sm font-semibold text-white hover:border-racing"
+          className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-paper transition-colors hover:border-signal"
         >
-          <Icon name="phone" className="h-4 w-4 text-racing" />
+          <Icon name="phone" className="h-4 w-4 text-signal" />
           {site.phone.display}
         </a>
       </div>
@@ -138,10 +131,9 @@ export function PartRequestForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-2xl border border-white/10 bg-ink-700 p-6 sm:p-8"
+      className="rounded-3xl border border-white/10 bg-ink-800 p-6 sm:p-8"
       noValidate
     >
-      {/* Honeypot caché */}
       <input
         type="text"
         name="company_website"
@@ -151,99 +143,120 @@ export function PartRequestForm({
         aria-hidden="true"
       />
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Nom complet" required>
-          <input name="name" required {...inputProps} placeholder="Jean Dupont" />
-        </Field>
-        <Field label="Société / garage">
-          <input name="company" {...inputProps} placeholder="Garage Dupont" />
-        </Field>
-        <Field label="Téléphone" required>
-          <input
-            name="phone"
-            type="tel"
-            required
-            {...inputProps}
-            placeholder="06 00 00 00 00"
-          />
-        </Field>
-        <Field label="Email">
-          <input
-            name="email"
-            type="email"
-            {...inputProps}
-            placeholder="contact@garage.fr"
-          />
-        </Field>
-        <Field label="Ville">
-          <input name="city" {...inputProps} placeholder="Labastide-Saint-Pierre" />
-        </Field>
-        <Field label="Catégorie de pièce">
-          <select
-            name="category_select"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            className={selectClass}
-          >
-            <option value="">Sélectionner…</option>
-            {productCategories.map((c) => (
-              <option key={c.slug} value={c.title}>
-                {c.title}
-              </option>
-            ))}
-          </select>
-        </Field>
-      </div>
-
-      <div className="mt-4 border-t border-white/5 pt-4">
-        <p className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-mute">
-          Véhicule & pièce (si connu)
-        </p>
-        <div className="grid gap-4 sm:grid-cols-3">
-          <Field label="Référence pièce">
-            <input name="reference" {...inputProps} placeholder="FRN-0421" />
+      {/* Bloc 1 — Vous */}
+      <FieldGroup step="01" title="Vos coordonnées">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Field label="Nom complet" required>
+            <input name="name" required {...inp} placeholder="Jean Dupont" />
           </Field>
-          <Field label="Immatriculation">
-            <input name="plate" {...inputProps} placeholder="AB-123-CD" />
+          <Field label="Société / garage" required>
+            <input name="company" required {...inp} placeholder="Garage Dupont" />
           </Field>
-          <Field label="Quantité">
+          <Field label="Téléphone" required>
             <input
-              name="quantity"
-              type="number"
-              min={1}
-              {...inputProps}
-              placeholder="1"
+              name="phone"
+              type="tel"
+              required
+              {...inp}
+              placeholder="06 00 00 00 00"
             />
           </Field>
-          <Field label="Marque">
-            <input name="brand" {...inputProps} placeholder="Renault" />
+          <Field label="Email" hint="optionnel">
+            <input name="email" type="email" {...inp} placeholder="contact@garage.fr" />
           </Field>
-          <Field label="Modèle">
-            <input name="model" {...inputProps} placeholder="Master" />
-          </Field>
-          <Field label="Année">
-            <input name="year" {...inputProps} placeholder="2019" />
-          </Field>
-          <div className="sm:col-span-3">
-            <Field label="Motorisation">
-              <input
-                name="engine"
-                {...inputProps}
-                placeholder="2.3 dCi 130ch"
-              />
+          <div className="sm:col-span-2">
+            <Field label="Ville" hint="optionnel">
+              <input name="city" {...inp} placeholder="Labastide-Saint-Pierre" />
             </Field>
           </div>
         </div>
-      </div>
+      </FieldGroup>
 
-      <div className="mt-4">
-        <Field label="Niveau d'urgence">
-          <div className="flex flex-wrap gap-2">
-            {urgencyOptions.map((opt, i) => (
-              <label
-                key={opt.value}
-                className="flex cursor-pointer items-center gap-2 rounded-md border border-white/10 bg-ink-800 px-3.5 py-2 text-sm text-white transition-colors has-[:checked]:border-racing has-[:checked]:bg-racing/10"
-              >
+      {/* Bloc 2 — Pièce */}
+      <FieldGroup step="02" title="La pièce recherchée">
+        <Field label="Catégorie" required>
+          <div className="relative">
+            <select
+              name="category_select"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              required
+              className={`${inpBase} appearance-none pr-10`}
+            >
+              <option value="">Sélectionner une catégorie…</option>
+              {productCategories.map((c) => (
+                <option key={c.slug} value={c.title}>
+                  {c.title}
+                </option>
+              ))}
+            </select>
+            <Icon
+              name="arrow"
+              className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 rotate-90 text-metal"
+            />
+          </div>
+        </Field>
+
+        {/* Détails véhicule repliables */}
+        <button
+          type="button"
+          onClick={() => setAdvancedOpen((v) => !v)}
+          className="mt-4 flex w-full items-center justify-between rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-left text-sm font-medium text-paper transition-colors hover:border-white/20"
+          aria-expanded={advancedOpen}
+        >
+          <span className="flex items-center gap-2">
+            <Icon name="utility" className="h-4 w-4 text-signal" />
+            Détails véhicule & référence
+            <span className="font-mono text-[11px] uppercase tracking-wider text-metal">
+              accélère la réponse
+            </span>
+          </span>
+          <Icon
+            name="arrow"
+            className={`h-4 w-4 text-metal transition-transform ${
+              advancedOpen ? "-rotate-90" : "rotate-90"
+            }`}
+          />
+        </button>
+
+        {advancedOpen && (
+          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            <Field label="Référence" hint="si connue">
+              <input name="reference" {...inp} placeholder="FRN-0421" />
+            </Field>
+            <Field label="Immatriculation" hint="optionnel">
+              <input name="plate" {...inp} placeholder="AB-123-CD" />
+            </Field>
+            <Field label="Quantité" hint="optionnel">
+              <input name="quantity" type="number" min={1} {...inp} placeholder="1" />
+            </Field>
+            <Field label="Marque" hint="optionnel">
+              <input name="brand" {...inp} placeholder="Renault" />
+            </Field>
+            <Field label="Modèle" hint="optionnel">
+              <input name="model" {...inp} placeholder="Master" />
+            </Field>
+            <Field label="Année" hint="optionnel">
+              <input name="year" {...inp} placeholder="2019" />
+            </Field>
+            <div className="sm:col-span-3">
+              <Field label="Motorisation" hint="optionnel">
+                <input name="engine" {...inp} placeholder="2.3 dCi 130ch" />
+              </Field>
+            </div>
+          </div>
+        )}
+      </FieldGroup>
+
+      {/* Bloc 3 — Urgence */}
+      <FieldGroup step="03" title="Niveau d'urgence">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+          {urgencyOptions.map((opt, i) => (
+            <label
+              key={opt.value}
+              className="flex cursor-pointer flex-col gap-0.5 rounded-xl border border-white/10 bg-ink-900 px-4 py-3 transition-colors has-[:checked]:border-signal has-[:checked]:bg-signal/10"
+            >
+              <span className="flex items-center gap-2 text-sm font-semibold text-paper">
                 <input
                   type="radio"
                   name="urgency"
@@ -251,50 +264,51 @@ export function PartRequestForm({
                   defaultChecked={
                     initialUrgency ? initialUrgency === opt.value : i === 1
                   }
-                  className="accent-racing"
+                  className="accent-signal"
                 />
                 {opt.label}
-              </label>
-            ))}
-          </div>
-        </Field>
-      </div>
+              </span>
+              <span className="pl-6 font-mono text-[10px] uppercase tracking-wider text-metal">
+                {opt.hint}
+              </span>
+            </label>
+          ))}
+        </div>
+      </FieldGroup>
 
-      <div className="mt-4">
-        <Field label="Message">
-          <textarea
-            name="message_text"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            rows={4}
-            className={`${inputBase} resize-y`}
-            placeholder="Décrivez votre besoin : pièce recherchée, contexte, délai…"
-          />
-        </Field>
-      </div>
+      {/* Bloc 4 — Message */}
+      <FieldGroup step="04" title="Votre message" last>
+        <textarea
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          rows={4}
+          className={`${inpBase} resize-y`}
+          placeholder="Décrivez le besoin : pièce, contexte, délai souhaité…"
+        />
+      </FieldGroup>
 
-      <label className="mt-4 flex items-start gap-3 text-sm text-mute">
+      <label className="mt-6 flex items-start gap-3 text-[13px] text-metal">
         <input
           type="checkbox"
           name="consent"
           required
-          className="mt-0.5 h-4 w-4 accent-racing"
+          className="mt-0.5 h-4 w-4 accent-signal"
         />
         <span>
-          J&apos;accepte que mes informations soient utilisées pour traiter ma demande,
-          conformément à la{" "}
+          J&apos;accepte que ces informations soient utilisées pour traiter ma demande,
+          selon la{" "}
           <a
             href="/politique-confidentialite"
-            className="text-white underline hover:text-racing"
+            className="text-paper underline hover:text-signal"
           >
             politique de confidentialité
           </a>
-          . <span className="text-racing">*</span>
+          . <span className="text-signal">*</span>
         </span>
       </label>
 
       {status === "error" && (
-        <p className="mt-4 rounded-md border border-racing/40 bg-racing/10 px-4 py-3 text-sm text-white">
+        <p className="mt-4 rounded-xl border border-signal/40 bg-signal/10 px-4 py-3 text-sm text-paper">
           {errorMsg}
         </p>
       )}
@@ -303,50 +317,84 @@ export function PartRequestForm({
         <button
           type="submit"
           disabled={status === "loading"}
-          className="inline-flex flex-1 items-center justify-center gap-2 rounded-md bg-racing px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_24px_-8px_rgba(225,6,0,0.6)] transition-all hover:bg-racing-dark disabled:opacity-60"
+          className="group/btn inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-signal px-7 py-3.5 text-[15px] font-semibold text-ink shadow-[0_10px_30px_-10px_rgba(255,77,29,0.7)] transition-all hover:bg-signal-soft hover:shadow-signal active:scale-[0.98] disabled:opacity-60"
         >
-          {status === "loading" ? "Envoi…" : "Envoyer ma demande"}
-          {status !== "loading" && <Icon name="arrow" className="h-4 w-4" />}
+          {status === "loading" ? "Envoi en cours…" : "Envoyer ma demande"}
+          {status !== "loading" && (
+            <Icon
+              name="arrow"
+              className="h-4 w-4 transition-transform group-hover/btn:translate-x-1"
+            />
+          )}
         </button>
         <a
           href={site.phone.href}
-          className="inline-flex items-center justify-center gap-2 rounded-md border border-white/15 px-7 py-3.5 text-base font-semibold text-white hover:border-racing"
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-7 py-3.5 text-[15px] font-semibold text-paper transition-colors hover:border-signal"
         >
-          <Icon name="phone" className="h-4 w-4 text-racing" />
-          Appeler le fournisseur
+          <Icon name="phone" className="h-4 w-4 text-signal" />
+          Appeler
         </a>
       </div>
 
-      <p className="mt-4 text-center text-xs text-mute">
-        {site.delivery.disclaimer}
+      <p className="mt-4 text-center text-xs text-metal">
+        Réponse rapide sur prix, disponibilité et délai · {site.delivery.disclaimer}
       </p>
     </form>
   );
 }
 
-const inputBase =
-  "w-full rounded-md border border-white/10 bg-ink-800 px-3.5 py-2.5 text-sm text-white placeholder:text-mute/60 transition-colors focus:border-racing focus:outline-none focus:ring-1 focus:ring-racing";
+const inpBase =
+  "w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-paper placeholder:text-metal-dim transition-all focus:border-signal focus:ring-2 focus:ring-signal/25";
 
-const selectClass = `${inputBase} appearance-none`;
+const inp = { className: inpBase };
 
-const inputProps = {
-  className: inputBase,
-};
+function FieldGroup({
+  step,
+  title,
+  last,
+  children,
+}: {
+  step: string;
+  title: string;
+  last?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <fieldset className={last ? "" : "mb-6 border-b border-white/5 pb-6"}>
+      <legend className="mb-4 flex items-center gap-2.5">
+        <span className="font-mono text-xs font-semibold text-signal">{step}</span>
+        <span className="font-display text-sm font-bold uppercase tracking-wide text-paper">
+          {title}
+        </span>
+      </legend>
+      {children}
+    </fieldset>
+  );
+}
 
 function Field({
   label,
   required,
+  hint,
   children,
 }: {
   label: string;
   required?: boolean;
+  hint?: string;
   children: React.ReactNode;
 }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-mute">
-        {label}
-        {required && <span className="text-racing"> *</span>}
+      <span className="mb-1.5 flex items-center justify-between">
+        <span className="text-xs font-medium uppercase tracking-wide text-metal">
+          {label}
+          {required && <span className="text-signal"> *</span>}
+        </span>
+        {hint && (
+          <span className="font-mono text-[10px] lowercase tracking-wide text-metal-dim">
+            {hint}
+          </span>
+        )}
       </span>
       {children}
     </label>

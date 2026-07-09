@@ -30,16 +30,16 @@ export default function CataloguePage() {
         title={
           <>
             Catalogue pièces auto &{" "}
-            <span className="text-racing">consommables</span>
+            <span className="text-signal">consommables</span>
           </>
         }
-        description="Pièces courantes, consommables d'atelier ou références spécifiques : choisissez une catégorie et demandez un prix ou la disponibilité. Aucun prix affiché — chaque demande reçoit une réponse personnalisée."
+        description="Pièces courantes, consommables d'atelier ou références spécifiques : choisissez une catégorie et demandez un prix ou la disponibilité. Aucun prix affiché, chaque demande reçoit une réponse personnalisée."
         crumbs={[
           { label: "Accueil", href: "/" },
           { label: "Catalogue" },
         ]}
       />
-      <ProductCategories title="Toutes nos familles de produits" />
+      <ProductCategories heading="Toutes nos familles de produits." />
       <CTASection />
     </>
   );

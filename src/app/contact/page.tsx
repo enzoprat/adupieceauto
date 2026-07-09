@@ -28,7 +28,7 @@ export default function ContactPage() {
         eyebrow="Demande de pièce"
         title={
           <>
-            Votre demande traitée <span className="text-racing">rapidement</span>
+            Votre demande traitée <span className="text-signal">rapidement</span>
           </>
         }
         description="Garages, réparateurs, professionnels : indiquez-nous la pièce ou le consommable recherché. Nous vérifions prix et disponibilité, puis revenons vers vous dans les meilleurs délais."

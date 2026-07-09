@@ -8,6 +8,54 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  @apply bg-ink text-paper antialiased;
+  font-feature-settings: "ss01", "cv01";
+}
+
+/* Titres display : grotesque technique, tracking serré */
+.font-display {
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 1023px) {
+  body {
+    padding-bottom: 4.75rem; /* place pour la barre CTA mobile */
+  }
+}
+
+::selection {
+  background: #ff4d1d;
+  color: #0d0f12;
+}
+
+/* Focus visible cohérent */
+:focus-visible {
+  outline: none;
+}
+
+/* Scrollbar discrète */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0f12;
+}
+::-webkit-scrollbar-thumb {
+  background: #2c3138;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3f47;
+}
+
+/* Utilitaire : chiffres tabulaires pour compteurs / refs */
+.tnum {
+  font-variant-numeric: tabular-nums;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -20,37 +68,6 @@ html {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
-}
-
-body {
-  @apply bg-ink text-haze antialiased;
-  /* Espace pour la barre CTA mobile sticky */
-}
-
-@media (max-width: 1023px) {
-  body {
-    padding-bottom: 4.5rem;
-  }
-}
-
-::selection {
-  background: #e10600;
-  color: #fff;
-}
-
-/* Scrollbar discrète */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #0b0b0d;
-}
-::-webkit-scrollbar-thumb {
-  background: #2a2d34;
-  border-radius: 999px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #3a3d44;
 }

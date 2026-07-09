@@ -1,35 +1,37 @@
-export type Benefit = {
+export type Proof = {
   label: string;
   detail: string;
-  icon: "bolt" | "tag" | "pin" | "garage" | "calendar" | "shield";
+  icon: "bolt" | "tag" | "garage" | "pin" | "clock";
+  /** Valeur chiffrée animée (optionnelle). */
+  stat?: { to: number; suffix?: string; prefix?: string };
+  fixed?: string;
 };
 
-/** Bandeau d'avantages affiché en home (BenefitsStrip). */
-export const benefits: Benefit[] = [
+/** Bandeau de preuves (modules, pas badges). */
+export const proofs: Proof[] = [
   {
-    label: "Livraison sous 4h",
-    detail: "Selon disponibilité et zone d'intervention",
+    label: "Livraison rapide",
+    detail: "sous 4h selon dispo et zone",
     icon: "bolt",
+    fixed: "4h",
   },
   {
-    label: "Prix attractifs",
-    detail: "Tarifs compétitifs pour les professionnels",
-    icon: "tag",
-  },
-  {
-    label: "Service de proximité",
-    detail: "Un interlocuteur direct et réactif",
-    icon: "pin",
-  },
-  {
-    label: "Fournisseur garages",
-    detail: "Pensé pour les ateliers et réparateurs",
+    label: "Clients réguliers",
+    detail: "garages & ateliers du 82",
     icon: "garage",
+    stat: { to: 20, suffix: "+" },
   },
   {
-    label: "Depuis 2019",
-    detail: "Plus de 20 clients réguliers",
-    icon: "calendar",
+    label: "Fournisseur local",
+    detail: "présent depuis",
+    icon: "pin",
+    stat: { to: 2019 },
+  },
+  {
+    label: "Prix atelier",
+    detail: "tarifs pensés pour votre marge",
+    icon: "tag",
+    fixed: "€€",
   },
 ];
 
@@ -37,71 +39,83 @@ export type Step = {
   number: string;
   title: string;
   description: string;
+  meta: string;
 };
 
-/** Étapes « Comment ça marche ». */
+/** Étapes « Comment ça marche » (process sticky). */
 export const steps: Step[] = [
   {
     number: "01",
-    title: "Envoyez votre demande",
+    title: "Vous envoyez votre demande",
     description:
-      "Indiquez la pièce ou la catégorie recherchée via le formulaire ou par téléphone.",
+      "Un numéro de référence, une plaque, ou juste la pièce et le véhicule. Par formulaire ou par téléphone, en moins d'une minute.",
+    meta: "Formulaire · Téléphone",
   },
   {
     number: "02",
-    title: "Nous vérifions prix et disponibilité",
+    title: "On identifie la bonne référence",
     description:
-      "Notre équipe identifie la référence, contrôle le stock et le délai de mise à disposition.",
+      "On croise votre besoin avec la référence exacte pour éviter l'erreur de pièce et le second déplacement.",
+    meta: "Sourcing · Contrôle réf",
   },
   {
     number: "03",
-    title: "Nous vous confirmons rapidement",
+    title: "On confirme prix et disponibilité",
     description:
-      "Vous recevez une réponse claire : prix, disponibilité et délai pour votre garage.",
+      "Vous recevez une réponse nette : prix, dispo et délai. Rien n'est commandé sans votre accord.",
+    meta: "Prix · Dispo · Délai",
   },
   {
     number: "04",
     title: "Livraison ou retrait",
     description:
-      "Livraison sous 4h selon disponibilité et zone, ou retrait sur place selon votre besoin.",
+      "Livraison sous 4h selon la zone et la typologie de pièce, ou retrait sur place. Vous choisissez.",
+    meta: "Livraison · Retrait",
   },
 ];
 
 export type Reason = {
   title: string;
   description: string;
+  icon: "phone" | "pin" | "tag" | "clock" | "garage" | "check";
 };
 
-/** Section « Pourquoi choisir Adu Pièce Auto ». */
+/** Section confiance « Pourquoi les garages travaillent avec nous ». */
 export const reasons: Reason[] = [
   {
-    title: "Réactivité",
+    icon: "phone",
+    title: "Un interlocuteur, pas un portail",
     description:
-      "Une demande, un échange direct, une réponse rapide. Nous traitons vos demandes en priorité pour limiter l'immobilisation des véhicules.",
+      "Vous parlez à quelqu'un qui connaît votre atelier et vos contraintes. Pas de ticket, pas de file d'attente automatisée.",
   },
   {
-    title: "Prix attractifs",
+    icon: "clock",
+    title: "Moins de temps perdu au téléphone",
     description:
-      "Des tarifs compétitifs sur les pièces courantes comme sur les consommables d'atelier, pour préserver vos marges.",
+      "Vous demandez, on cherche. Vous récupérez du temps pour ce qui compte : sortir les véhicules de l'atelier.",
   },
   {
-    title: "Proximité",
+    icon: "tag",
+    title: "Des prix qui préservent la marge",
     description:
-      "Implantés à Labastide-Saint-Pierre, nous connaissons le terrain et accompagnons les garages du Tarn-et-Garonne.",
+      "Tarifs négociés sur les pièces courantes et les consommables, pour que votre devis reste compétitif.",
   },
   {
-    title: "Sourcing fiable",
+    icon: "pin",
+    title: "Une logistique locale maîtrisée",
     description:
-      "Pièces courantes ou demandes spécifiques : nous identifions la bonne référence et vérifions la disponibilité.",
+      "Labastide-Saint-Pierre et alentours : on connaît les routes, les délais et les urgences du terrain.",
   },
   {
-    title: "Relation directe",
+    icon: "check",
+    title: "La bonne pièce du premier coup",
     description:
-      "Pas d'interface impersonnelle. Vous parlez à un interlocuteur qui connaît votre activité et vos contraintes.",
+      "On confirme la référence avant commande pour éviter le mauvais montage et le second déplacement.",
   },
   {
-    title: "Consommables inclus",
+    icon: "garage",
+    title: "Pensé pour les pros",
     description:
-      "Au-delà des pièces, nous fournissons les consommables d'atelier indispensables au quotidien des garages.",
+      "Garages indépendants, ateliers, réparateurs, carrossiers, flottes utilitaires : le service est calibré pour vous.",
   },
 ];

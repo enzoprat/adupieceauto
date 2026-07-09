@@ -9,14 +9,14 @@ export function MobileStickyCta() {
     <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-white/10 bg-ink/95 p-3 backdrop-blur-md lg:hidden">
       <a
         href={site.phone.href}
-        className="flex items-center justify-center gap-2 rounded-md border border-white/15 py-3 text-sm font-semibold text-white"
+        className="flex items-center justify-center gap-2 rounded-full border border-white/15 py-3 text-sm font-semibold text-paper"
       >
-        <Icon name="phone" className="h-4 w-4 text-racing" />
+        <Icon name="phone" className="h-4 w-4 text-signal" />
         Appeler
       </a>
       <Link
         href={primaryCta.href}
-        className="flex items-center justify-center gap-2 rounded-md bg-racing py-3 text-sm font-semibold text-white"
+        className="flex items-center justify-center gap-2 rounded-full bg-signal py-3 text-sm font-semibold text-ink"
       >
         <Icon name="bolt" className="h-4 w-4" />
         Demander une pièce

@@ -6,13 +6,13 @@ export default function NotFound() {
   return (
     <section className="flex min-h-[70vh] items-center bg-ink">
       <div className="mx-auto max-w-content px-5 text-center sm:px-6 lg:px-8">
-        <p className="font-mono text-sm uppercase tracking-[0.22em] text-racing">
+        <p className="font-mono text-sm uppercase tracking-[0.22em] text-signal">
           Erreur 404
         </p>
-        <h1 className="mt-4 font-tight text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+        <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tightest text-paper sm:text-5xl">
           Cette page est introuvable
         </h1>
-        <p className="mx-auto mt-4 max-w-md text-base text-mute">
+        <p className="mx-auto mt-4 max-w-md text-base text-metal">
           La page recherchée n&apos;existe pas ou a été déplacée. Retrouvez nos pièces
           et consommables, ou faites votre demande directement.
         </p>

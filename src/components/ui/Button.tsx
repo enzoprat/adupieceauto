@@ -5,19 +5,19 @@ type Variant = "primary" | "outline" | "ghost";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-md font-semibold tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-racing/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink disabled:opacity-60 disabled:pointer-events-none";
+  "group/btn inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-[background,box-shadow,border-color,transform] duration-200 focus-visible:ring-2 focus-visible:ring-signal/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink disabled:opacity-60 disabled:pointer-events-none active:scale-[0.98]";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-racing text-white shadow-[0_8px_24px_-8px_rgba(225,6,0,0.6)] hover:bg-racing-dark hover:shadow-glow",
+    "bg-signal text-ink shadow-[0_10px_30px_-10px_rgba(255,77,29,0.7)] hover:bg-signal-soft hover:shadow-signal",
   outline:
-    "border border-white/15 text-white hover:border-racing hover:text-white hover:bg-white/[0.04]",
-  ghost: "text-mute hover:text-white",
+    "border border-white/15 text-paper hover:border-signal/60 hover:bg-white/[0.04]",
+  ghost: "text-metal hover:text-paper",
 };
 
 const sizes: Record<Size, string> = {
   md: "px-5 py-2.5 text-sm",
-  lg: "px-7 py-3.5 text-base",
+  lg: "px-7 py-3.5 text-[15px]",
 };
 
 type CommonProps = {

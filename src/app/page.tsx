@@ -1,10 +1,10 @@
 import { Hero } from "@/components/sections/Hero";
-import { BenefitsStrip } from "@/components/sections/BenefitsStrip";
-import { PartsIntro } from "@/components/sections/PartsIntro";
-import { DeliverySection } from "@/components/sections/DeliverySection";
+import { ProofBar } from "@/components/sections/ProofBar";
+import { ProblemSection } from "@/components/sections/ProblemSection";
 import { ProductCategories } from "@/components/sections/ProductCategories";
-import { WhyChoose } from "@/components/sections/WhyChoose";
+import { DeliverySection } from "@/components/sections/DeliverySection";
 import { HowItWorks } from "@/components/sections/HowItWorks";
+import { WhyChoose } from "@/components/sections/WhyChoose";
 import { CTASection } from "@/components/sections/CTASection";
 import { ContactSection } from "@/components/sections/ContactSection";
 
@@ -12,12 +12,12 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <BenefitsStrip />
-      <PartsIntro />
+      <ProofBar />
+      <ProblemSection />
+      <ProductCategories limit={6} showAllCta />
       <DeliverySection />
-      <ProductCategories limit={6} showAllCta title="Catalogue produits" />
-      <WhyChoose />
       <HowItWorks />
+      <WhyChoose />
       <CTASection />
       <ContactSection />
     </>

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
+import { Archivo, Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -7,24 +7,24 @@ import { MobileStickyCta } from "@/components/layout/MobileStickyCta";
 import { localBusinessJsonLd } from "@/lib/seo";
 import { site } from "@/data/site";
 
-const inter = Inter({
+const display = Archivo({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-display",
+  display: "swap",
+  weight: ["600", "700", "800", "900"],
+});
+
+const body = Instrument_Sans({
+  subsets: ["latin"],
+  variable: "--font-body",
   display: "swap",
 });
 
-const interTight = Inter_Tight({
-  subsets: ["latin"],
-  variable: "--font-inter-tight",
-  display: "swap",
-  weight: ["600", "700", "800"],
-});
-
-const mono = JetBrains_Mono({
+const mono = IBM_Plex_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0B0B0D",
+  themeColor: "#0D0F12",
   width: "device-width",
   initialScale: 1,
 };
@@ -66,7 +66,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${inter.variable} ${interTight.variable} ${mono.variable}`}
+      className={`${display.variable} ${body.variable} ${mono.variable}`}
     >
       <body>
         <script
@@ -77,7 +77,7 @@ export default function RootLayout({
         />
         <a
           href="#contenu"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:rounded-md focus:bg-racing focus:px-4 focus:py-2 focus:text-white"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-signal focus:px-4 focus:py-2 focus:text-ink"
         >
           Aller au contenu
         </a>

@@ -36,7 +36,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-md px-3.5 py-2 text-sm font-medium text-mute transition-colors hover:text-white"
+              className="rounded-full px-3.5 py-2 text-sm font-medium text-metal transition-colors hover:text-paper"
             >
               {link.label}
             </Link>
@@ -46,17 +46,20 @@ export function Header() {
         <div className="hidden items-center gap-3 lg:flex">
           <a
             href={site.phone.href}
-            className="flex items-center gap-2 text-sm font-semibold text-white"
+            className="flex items-center gap-2 text-sm font-semibold text-paper transition-colors hover:text-signal"
           >
-            <Icon name="phone" className="h-4 w-4 text-racing" />
+            <Icon name="phone" className="h-4 w-4 text-signal" />
             {site.phone.display}
           </a>
           <Link
             href={primaryCta.href}
-            className="inline-flex items-center gap-2 rounded-md bg-racing px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgba(225,6,0,0.6)] transition-all hover:bg-racing-dark hover:shadow-glow"
+            className="group/btn inline-flex items-center gap-2 rounded-full bg-signal px-5 py-2.5 text-sm font-semibold text-ink shadow-signal transition-all hover:bg-signal-soft"
           >
             {primaryCta.label}
-            <Icon name="arrow" className="h-4 w-4" />
+            <Icon
+              name="arrow"
+              className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5"
+            />
           </Link>
         </div>
 

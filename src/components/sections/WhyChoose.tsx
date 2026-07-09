@@ -1,39 +1,41 @@
-import { Section, Eyebrow } from "@/components/ui/Section";
-import { Reveal } from "@/components/ui/Reveal";
+import { Section, Kicker } from "@/components/ui/Section";
+import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
 import { reasons } from "@/data/benefits";
+import { site } from "@/data/site";
 
 export function WhyChoose() {
   return (
     <Section className="bg-ink">
       <div className="max-w-2xl">
-        <Eyebrow>Notre engagement</Eyebrow>
-        <h2 className="mt-4 font-tight text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-          Pourquoi choisir Adu Pièce Auto
+        <Kicker>Pourquoi les garages restent</Kicker>
+        <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-tightest text-paper sm:text-4xl">
+          Un fournisseur, pas une plateforme de plus.
         </h2>
-        <p className="mt-4 text-base leading-relaxed text-mute">
-          Des prix attractifs, un service réactif et une relation de proximité pour
-          vous aider à gagner du temps au quotidien.
+        <p className="mt-4 text-[16px] leading-relaxed text-metal">
+          Créée en {site.founded} par {site.founder}, l&apos;entreprise s&apos;est
+          construite sur la relation directe et la réactivité. Aujourd&apos;hui, plus
+          de {site.clientsCount} garages et ateliers commandent régulièrement.
         </p>
       </div>
 
-      <div className="mt-10 grid gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
-        {reasons.map((reason, i) => (
-          <Reveal key={reason.title} delay={(i % 3) * 0.05}>
-            <div className="group h-full bg-ink-700 p-6 transition-colors hover:bg-ink-600">
-              <span className="flex h-10 w-10 items-center justify-center rounded-md border border-white/10 bg-ink-800 text-racing transition-colors group-hover:border-racing/40">
-                <Icon name="check" className="h-5 w-5" />
+      <Stagger className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {reasons.map((reason) => (
+          <StaggerItem key={reason.title} className="h-full">
+            <div className="group h-full rounded-2xl border border-white/10 bg-ink-800 p-6 transition-colors hover:border-signal/40">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-ink-700 text-signal transition-colors group-hover:border-signal/40">
+                <Icon name={reason.icon} className="h-5 w-5" />
               </span>
-              <h3 className="mt-4 font-tight text-lg font-bold text-white">
+              <h3 className="mt-5 font-display text-lg font-bold text-paper">
                 {reason.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-mute">
+              <p className="mt-2 text-[15px] leading-relaxed text-metal">
                 {reason.description}
               </p>
             </div>
-          </Reveal>
+          </StaggerItem>
         ))}
-      </div>
+      </Stagger>
     </Section>
   );
 }
