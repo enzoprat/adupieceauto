@@ -49,7 +49,7 @@ export function ContactSection() {
             href={site.phone.href}
             className="mt-6 flex items-center gap-4 rounded-2xl border border-signal/30 bg-signal/10 p-5 transition-colors hover:bg-signal/15"
           >
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-signal text-ink">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-signal text-paper">
               <Icon name="phone" className="h-6 w-6" />
             </span>
             <span>

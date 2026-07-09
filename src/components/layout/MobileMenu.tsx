@@ -76,7 +76,7 @@ export function MobileMenu() {
             <Link
               href={primaryCta.href}
               onClick={() => setOpen(false)}
-              className="flex items-center justify-center gap-2 rounded-full bg-signal px-5 py-3.5 text-base font-semibold text-ink shadow-signal"
+              className="flex items-center justify-center gap-2 rounded-full glass-signal border border-signal/50 px-5 py-3.5 text-base font-semibold text-paper shadow-glass"
             >
               {primaryCta.label}
               <Icon name="arrow" className="h-4 w-4" />

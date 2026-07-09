@@ -317,7 +317,7 @@ export function PartRequestForm({
         <button
           type="submit"
           disabled={status === "loading"}
-          className="group/btn inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-signal px-7 py-3.5 text-[15px] font-semibold text-ink shadow-[0_10px_30px_-10px_rgba(255,77,29,0.7)] transition-all hover:bg-signal-soft hover:shadow-signal active:scale-[0.98] disabled:opacity-60"
+          className="group/btn inline-flex flex-1 items-center justify-center gap-2 rounded-full glass-signal border border-signal/50 px-7 py-3.5 text-[15px] font-semibold text-paper shadow-glass transition-all hover:-translate-y-0.5 hover:border-signal/80 hover:shadow-signal active:scale-[0.98] disabled:opacity-60 disabled:hover:translate-y-0"
         >
           {status === "loading" ? "Envoi en cours…" : "Envoyer ma demande"}
           {status !== "loading" && (
@@ -329,7 +329,7 @@ export function PartRequestForm({
         </button>
         <a
           href={site.phone.href}
-          className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-7 py-3.5 text-[15px] font-semibold text-paper transition-colors hover:border-signal"
+          className="inline-flex items-center justify-center gap-2 rounded-full glass border border-white/15 px-7 py-3.5 text-[15px] font-semibold text-paper transition-all hover:-translate-y-0.5 hover:border-signal/50"
         >
           <Icon name="phone" className="h-4 w-4 text-signal" />
           Appeler

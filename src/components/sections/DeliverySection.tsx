@@ -87,7 +87,7 @@ export function DeliverySection() {
             <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-ink-900">
               {/* fond carte abstrait */}
               <div className="absolute inset-0 bg-grid-dark bg-[size:34px_34px] opacity-60" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,77,29,0.16),transparent_55%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(225,6,0,0.16),transparent_55%)]" />
 
               <div className="relative flex min-h-[300px] items-center justify-center p-6">
                 {/* cercles de rayon */}
@@ -95,7 +95,7 @@ export function DeliverySection() {
                 <span className="absolute h-40 w-40 rounded-full border border-white/10" />
                 <span className="absolute h-24 w-24 rounded-full border border-signal/30" />
                 <span className="relative flex flex-col items-center">
-                  <span className="flex h-12 w-12 animate-pulse-ring items-center justify-center rounded-full bg-signal text-ink">
+                  <span className="flex h-12 w-12 animate-pulse-ring items-center justify-center rounded-full bg-signal text-paper">
                     <Icon name="pin" className="h-6 w-6" />
                   </span>
                   <span className="mt-3 rounded-full border border-white/10 bg-ink-800 px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-paper">

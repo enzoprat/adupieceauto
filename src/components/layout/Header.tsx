@@ -53,7 +53,7 @@ export function Header() {
           </a>
           <Link
             href={primaryCta.href}
-            className="group/btn inline-flex items-center gap-2 rounded-full bg-signal px-5 py-2.5 text-sm font-semibold text-ink shadow-signal transition-all hover:bg-signal-soft"
+            className="group/btn inline-flex items-center gap-2 rounded-full glass-signal border border-signal/50 px-5 py-2.5 text-sm font-semibold text-paper shadow-glass transition-all hover:-translate-y-0.5 hover:border-signal/80 hover:shadow-signal"
           >
             {primaryCta.label}
             <Icon

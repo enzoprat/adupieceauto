@@ -21,11 +21,11 @@ const config: Config = {
         paper: "#F5F3EE", // blanc technique
         metal: "#8A8F98", // gris métal
         "metal-dim": "#5A5F68",
-        // Signal atelier
+        // Signal atelier (rouge de marque)
         signal: {
-          DEFAULT: "#FF4D1D",
-          soft: "#FF6A00",
-          dark: "#C53810",
+          DEFAULT: "#E10600",
+          soft: "#FF2A22",
+          dark: "#A30400",
         },
         // Statuts
         avail: "#39D98A", // dispo
@@ -45,14 +45,17 @@ const config: Config = {
       boxShadow: {
         card: "0 1px 0 0 rgba(255,255,255,0.04) inset, 0 24px 60px -24px rgba(0,0,0,0.75)",
         signal:
-          "0 0 0 1px rgba(255,77,29,0.35), 0 18px 50px -12px rgba(255,77,29,0.4)",
+          "0 0 0 1px rgba(225,6,0,0.35), 0 18px 50px -12px rgba(225,6,0,0.45)",
+        // Glass premium : reflet interne + halo rouge diffus
+        glass:
+          "inset 0 1px 0 0 rgba(255,255,255,0.14), inset 0 -1px 0 0 rgba(0,0,0,0.35), 0 10px 30px -10px rgba(225,6,0,0.45)",
         lift: "0 30px 70px -30px rgba(0,0,0,0.85)",
       },
       backgroundImage: {
         "grid-dark":
           "linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)",
         "signal-radial":
-          "radial-gradient(60% 60% at 50% 0%, rgba(255,77,29,0.18), transparent 70%)",
+          "radial-gradient(60% 60% at 50% 0%, rgba(225,6,0,0.20), transparent 70%)",
       },
       keyframes: {
         "fade-up": {

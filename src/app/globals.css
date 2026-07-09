@@ -28,8 +28,28 @@ body {
 }
 
 ::selection {
-  background: #ff4d1d;
-  color: #0d0f12;
+  background: #e10600;
+  color: #f5f3ee;
+}
+
+/* Utilitaire glass : verre dépoli teinté rouge pour CTA/surfaces */
+.glass {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+.glass-signal {
+  background: linear-gradient(
+    180deg,
+    rgba(225, 6, 0, 0.28) 0%,
+    rgba(225, 6, 0, 0.12) 100%
+  );
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
 }
 
 /* Focus visible cohérent */

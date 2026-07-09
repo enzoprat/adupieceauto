@@ -174,7 +174,7 @@ export function Hero() {
                 </motion.div>
               ))}
 
-              <div className="flex items-center gap-3 rounded-xl bg-signal px-4 py-3.5 text-ink">
+              <div className="flex items-center gap-3 rounded-xl bg-signal px-4 py-3.5 text-paper">
                 <Icon name="bolt" className="h-5 w-5" />
                 <div>
                   <p className="text-sm font-bold leading-none">
