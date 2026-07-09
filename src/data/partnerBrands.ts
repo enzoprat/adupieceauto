@@ -75,3 +75,20 @@ export const brandFamilies: BrandFamily[] = [
 export const allBrands: string[] = Array.from(
   new Set(brandFamilies.flatMap((f) => f.brands))
 ).sort((a, b) => a.localeCompare(b, "fr"));
+
+/**
+ * Logos disponibles localement (public/logos/). Clé = nom exact de la marque.
+ * Les marques absentes de cette table s'affichent en wordmark typographique.
+ */
+export const brandLogos: Record<string, string> = {
+  Bosch: "bosch.png",
+  TRW: "trw.png",
+  Brembo: "brembo.png",
+  Ferodo: "ferodo.png",
+  SKF: "skf.png",
+  Valeo: "valeo.svg",
+  Osram: "osram.png",
+  Philips: "philips.png",
+  Fiamm: "fiamm.png",
+  Michelin: "michelin.png",
+};

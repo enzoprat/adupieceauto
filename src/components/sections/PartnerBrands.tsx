@@ -1,7 +1,9 @@
 import { Section, Kicker } from "@/components/ui/Section";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
-import { brandFamilies } from "@/data/partnerBrands";
+import { brandFamilies, brandLogos } from "@/data/partnerBrands";
+
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export function PartnerBrands() {
   return (
@@ -32,14 +34,28 @@ export function PartnerBrands() {
               </div>
 
               <ul className="mt-5 flex flex-wrap gap-2">
-                {family.brands.map((brand) => (
-                  <li
-                    key={brand}
-                    className="rounded-lg border border-white/10 bg-ink-700/60 px-3 py-1.5 font-display text-sm font-semibold tracking-tight text-paper/90 transition-colors group-hover:border-white/15"
-                  >
-                    {brand}
-                  </li>
-                ))}
+                {family.brands.map((brand) => {
+                  const logo = brandLogos[brand];
+                  return (
+                    <li key={brand}>
+                      {logo ? (
+                        <span className="flex h-11 items-center justify-center rounded-lg border border-white/10 bg-paper px-3 transition-colors group-hover:border-white/25">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={`${BASE}/logos/${logo}`}
+                            alt={`${brand} — marque référencée`}
+                            className="h-5 w-auto max-w-[92px] object-contain"
+                            loading="lazy"
+                          />
+                        </span>
+                      ) : (
+                        <span className="flex h-11 items-center rounded-lg border border-white/10 bg-ink-700/60 px-3 font-display text-sm font-semibold tracking-tight text-paper/90 transition-colors group-hover:border-white/15">
+                          {brand}
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </StaggerItem>
