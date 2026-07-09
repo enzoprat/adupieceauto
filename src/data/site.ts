@@ -16,7 +16,7 @@ export const site = {
     raw: "+33602013463",
   },
   email: "jules.bertrand@atelierutilitaire.fr",
-  hours: "Lun – Sam : 8h – 18h",
+  hours: "Lun–Ven : 8h–12h / 14h–18h30 · Sam : 8h–12h",
   address: {
     street: "100 rue de Vérone",
     postalCode: "82370",
