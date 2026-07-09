@@ -10,13 +10,7 @@ export const metadata: Metadata = buildMetadata({
   path: "/contact",
 });
 
-export default async function ContactPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ categorie?: string; urgence?: string }>;
-}) {
-  const params = await searchParams;
-
+export default function ContactPage() {
   return (
     <>
       <script
@@ -40,10 +34,7 @@ export default async function ContactPage({
         description="Garages, réparateurs, professionnels : indiquez-nous la pièce ou le consommable recherché. Nous vérifions prix et disponibilité, puis revenons vers vous dans les meilleurs délais."
         crumbs={[{ label: "Accueil", href: "/" }, { label: "Contact" }]}
       />
-      <ContactSection
-        initialCategorySlug={params.categorie}
-        initialUrgency={params.urgence}
-      />
+      <ContactSection />
     </>
   );
 }

@@ -1,12 +1,7 @@
 import { Section, Eyebrow } from "@/components/ui/Section";
-import { PartRequestForm } from "@/components/forms/PartRequestForm";
+import { PartRequestFormClient } from "@/components/forms/PartRequestFormClient";
 import { Icon } from "@/components/ui/Icon";
 import { site } from "@/data/site";
-
-type ContactSectionProps = {
-  initialCategorySlug?: string;
-  initialUrgency?: string;
-};
 
 const coordinates = [
   {
@@ -35,10 +30,7 @@ const coordinates = [
 
 const mapQuery = encodeURIComponent(site.address.full);
 
-export function ContactSection({
-  initialCategorySlug,
-  initialUrgency,
-}: ContactSectionProps) {
+export function ContactSection() {
   return (
     <Section className="bg-ink">
       <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
@@ -126,10 +118,7 @@ export function ContactSection({
             <Icon name="garage" className="h-4 w-4 text-racing" />
             Réservé aux professionnels & garages
           </div>
-          <PartRequestForm
-            initialCategorySlug={initialCategorySlug}
-            initialUrgency={initialUrgency}
-          />
+          <PartRequestFormClient />
         </div>
       </div>
     </Section>

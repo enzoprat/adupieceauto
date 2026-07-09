@@ -45,20 +45,58 @@ export function PartRequestForm({
 
     const form = e.currentTarget;
     const fd = new FormData(form);
-    const payload = Object.fromEntries(fd.entries());
-    payload.category = category;
-    payload.message = message;
-    payload.consent = fd.get("consent") ? "true" : "";
+
+    // Honeypot anti-spam
+    if (fd.get("company_website")) {
+      setStatus("success");
+      form.reset();
+      return;
+    }
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
+    // Sans clé configurée : succès simulé pour tester l'interface (preview).
+    if (!accessKey) {
+      setStatus("success");
+      form.reset();
+      return;
+    }
+
+    const payload = {
+      access_key: accessKey,
+      subject: `Nouvelle demande de pièce — ${fd.get("name")}`,
+      from_name: "Site Adu Pièce Auto",
+      replyto: (fd.get("email") as string) || undefined,
+      Nom: fd.get("name"),
+      "Société / garage": fd.get("company"),
+      Téléphone: fd.get("phone"),
+      Email: fd.get("email"),
+      Ville: fd.get("city"),
+      "Catégorie de pièce": category,
+      "Référence pièce": fd.get("reference"),
+      Immatriculation: fd.get("plate"),
+      Marque: fd.get("brand"),
+      Modèle: fd.get("model"),
+      Année: fd.get("year"),
+      Motorisation: fd.get("engine"),
+      Quantité: fd.get("quantity"),
+      Urgence: fd.get("urgency"),
+      Message: message,
+      "Consentement RGPD": fd.get("consent") ? "Oui" : "Non",
+    };
 
     try {
-      const res = await fetch("/api/lead", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify(payload),
       });
       const json = await res.json();
-      if (!res.ok || !json.ok) {
-        throw new Error(json.error || "Une erreur est survenue.");
+      if (!res.ok || !json.success) {
+        throw new Error("L'envoi a échoué. Merci de réessayer ou d'appeler.");
       }
       setStatus("success");
       form.reset();
