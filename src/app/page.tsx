@@ -2,6 +2,7 @@ import { Hero } from "@/components/sections/Hero";
 import { ProofBar } from "@/components/sections/ProofBar";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 import { ProductCategories } from "@/components/sections/ProductCategories";
+import { PartnerBrands } from "@/components/sections/PartnerBrands";
 import { DeliverySection } from "@/components/sections/DeliverySection";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { WhyChoose } from "@/components/sections/WhyChoose";
@@ -15,6 +16,7 @@ export default function HomePage() {
       <ProofBar />
       <ProblemSection />
       <ProductCategories limit={6} showAllCta />
+      <PartnerBrands />
       <DeliverySection />
       <HowItWorks />
       <WhyChoose />
