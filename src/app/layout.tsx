@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     "consommables automobile garage",
     "pièces auto Tarn-et-Garonne",
     "livraison pièces auto",
-    "pièces auto pour professionnels",
+    "pièces auto pour professionnels et particuliers",
     "fournisseur garage automobile",
     "pièces automobiles 82370",
     "Adu Pièce Auto",

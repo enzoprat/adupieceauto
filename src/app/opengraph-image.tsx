@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { site } from "@/data/site";
 
 export const dynamic = "force-static";
-export const alt = `${site.name} — Pièces auto & consommables pour garages`;
+export const alt = `${site.name} — Pièces auto, consommables & outillage`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -46,7 +46,7 @@ export default function OgImage() {
               textTransform: "uppercase",
             }}
           >
-            Fournisseur garages · 82
+            Pros & particuliers · 82
           </div>
         </div>
 
@@ -71,7 +71,7 @@ export default function OgImage() {
               letterSpacing: "-2px",
             }}
           >
-            livrés sous 4h
+livrés sous 2h dans le 82
           </div>
           <div style={{ color: "#9CA3AF", fontSize: "30px", marginTop: "24px" }}>
             {`${site.name} — Labastide-Saint-Pierre (82370)`}

@@ -3,7 +3,10 @@ import {
   type ProductCategory,
   STATUS_LABEL,
 } from "@/data/productCategories";
+import { brandsByIcon, brandLogos } from "@/data/partnerBrands";
 import { Icon } from "@/components/ui/Icon";
+
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export function ProductCategoryCard({
   category,
@@ -13,6 +16,7 @@ export function ProductCategoryCard({
   index: number;
 }) {
   const requestHref = `/contact?categorie=${category.slug}`;
+  const brands = brandsByIcon[category.icon] ?? [];
   const statusClass =
     category.status === "confirmer"
       ? "border-pending/30 bg-pending/10 text-pending"
@@ -50,6 +54,40 @@ export function ProductCategoryCard({
           </li>
         ))}
       </ul>
+
+      {brands.length > 0 && (
+        <div className="mt-5">
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-metal-dim">
+            Marques référencées
+          </span>
+          <div className="mt-2 flex flex-wrap items-center gap-1.5">
+            {brands.map((brand) => {
+              const logo = brandLogos[brand];
+              return logo ? (
+                <span
+                  key={brand}
+                  className="flex h-7 items-center justify-center rounded-md border border-white/10 bg-paper px-1.5"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`${BASE}/logos/${logo}`}
+                    alt={`${brand} — marque référencée`}
+                    className="h-3.5 w-auto max-w-[52px] object-contain"
+                    loading="lazy"
+                  />
+                </span>
+              ) : (
+                <span
+                  key={brand}
+                  className="rounded-md border border-white/10 bg-ink-700/60 px-2 py-1 text-[10px] font-semibold text-paper/80"
+                >
+                  {brand}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       <div className="mt-5 flex items-center justify-between border-t border-white/5 pt-4">
         <span

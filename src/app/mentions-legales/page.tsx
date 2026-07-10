@@ -61,9 +61,9 @@ export default function MentionsLegalesPage() {
         <p>
           Les informations diffusées sur ce site sont fournies à titre indicatif.
           Les délais de livraison, la disponibilité et les tarifs sont confirmés au
-          cas par cas après échange avec notre équipe. La mention « livraison sous 4h »
-          s&apos;entend selon disponibilité, typologie de pièce et zone
-          d&apos;intervention.
+          cas par cas après échange avec notre équipe. La mention « livraison sous 2h
+          dans le 82 » s&apos;entend selon disponibilité, typologie de pièce et
+          zone d&apos;intervention.
         </p>
       </div>
 

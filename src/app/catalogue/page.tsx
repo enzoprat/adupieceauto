@@ -5,9 +5,9 @@ import { CTASection } from "@/components/sections/CTASection";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Catalogue pièces auto & consommables pour garages",
+  title: "Catalogue pièces auto, consommables & outillage",
   description:
-    "Catalogue des familles de pièces auto et consommables pour garages : freinage, filtration, batteries, éclairage, lubrifiants, distribution et plus. Demande de prix et disponibilité.",
+    "Catalogue des familles de pièces auto, consommables et outillage pour professionnels et particuliers : freinage, filtration, batteries, éclairage, lubrifiants, distribution et plus. Demande de prix et disponibilité.",
   path: "/catalogue",
 });
 

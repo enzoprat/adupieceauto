@@ -149,8 +149,8 @@ export function PartRequestForm({
           <Field label="Nom complet" required>
             <input name="name" required {...inp} placeholder="Jean Dupont" />
           </Field>
-          <Field label="Société / garage" required>
-            <input name="company" required {...inp} placeholder="Garage Dupont" />
+          <Field label="Société / garage" hint="si pro">
+            <input name="company" {...inp} placeholder="Garage Dupont" />
           </Field>
           <Field label="Téléphone" required>
             <input

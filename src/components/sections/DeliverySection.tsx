@@ -11,7 +11,7 @@ const timeline = [
   { label: "Demande reçue", meta: "T+0", icon: "mail" as const },
   { label: "Référence identifiée", meta: "T+10 min", icon: "check" as const },
   { label: "Prix & dispo confirmés", meta: "T+30 min", icon: "tag" as const },
-  { label: "Livraison ou retrait", meta: "sous 4h", icon: "bolt" as const },
+  { label: "Livraison ou retrait", meta: "sous 2h", icon: "bolt" as const },
 ];
 
 export function DeliverySection() {
@@ -32,8 +32,8 @@ export function DeliverySection() {
         <div ref={ref}>
           <Kicker>Logistique de proximité</Kicker>
           <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-tightest text-paper sm:text-4xl lg:text-[2.75rem]">
-            Livraison <span className="text-signal">sous 4h</span> autour de
-            Labastide-Saint-Pierre.
+            Livraison <span className="text-signal">sous 2h</span> dans tout le
+            Tarn-et-Garonne.
           </h2>
           <p className="mt-6 max-w-lg text-[16px] leading-relaxed text-metal">
             De la demande à la mise à disposition, chaque étape est traitée sans

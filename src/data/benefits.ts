@@ -11,13 +11,13 @@ export type Proof = {
 export const proofs: Proof[] = [
   {
     label: "Livraison rapide",
-    detail: "sous 4h selon dispo et zone",
+    detail: "sous 2h dans le 82",
     icon: "bolt",
-    fixed: "4h",
+    fixed: "2h",
   },
   {
     label: "Clients réguliers",
-    detail: "garages & ateliers du 82",
+    detail: "pros & particuliers du 82",
     icon: "garage",
     stat: { to: 20, suffix: "+" },
   },
@@ -28,8 +28,8 @@ export const proofs: Proof[] = [
     stat: { to: 2019 },
   },
   {
-    label: "Prix atelier",
-    detail: "tarifs pensés pour votre marge",
+    label: "Prix intéressant",
+    detail: "tarifs compétitifs",
     icon: "tag",
     fixed: "€€",
   },

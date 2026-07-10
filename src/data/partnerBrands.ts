@@ -77,6 +77,14 @@ export const allBrands: string[] = Array.from(
 ).sort((a, b) => a.localeCompare(b, "fr"));
 
 /**
+ * Marques référencées indexées par icône de catégorie produit.
+ * Permet d'afficher les logos des équipementiers directement sur les
+ * cartes du catalogue (fusion avec la section « Marques référencées »).
+ */
+export const brandsByIcon: Partial<Record<ProductIcon, string[]>> =
+  Object.fromEntries(brandFamilies.map((f) => [f.icon, f.brands]));
+
+/**
  * Logos disponibles localement (public/logos/). Clé = nom exact de la marque.
  * Les marques absentes de cette table s'affichent en wordmark typographique.
  */

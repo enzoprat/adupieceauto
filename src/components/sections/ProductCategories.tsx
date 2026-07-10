@@ -53,6 +53,11 @@ export function ProductCategories({
           </StaggerItem>
         ))}
       </Stagger>
+
+      <p className="mt-8 text-center text-xs text-metal-dim">
+        Marques citées à titre indicatif — elles restent la propriété de leurs
+        détenteurs respectifs.
+      </p>
     </Section>
   );
 }

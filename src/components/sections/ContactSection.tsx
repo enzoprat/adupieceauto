@@ -93,9 +93,9 @@ export function ContactSection() {
           <div className="mt-5 flex items-start gap-3 rounded-2xl border border-white/10 bg-ink-800 p-4">
             <Icon name="bolt" className="mt-0.5 h-5 w-5 shrink-0 text-signal" />
             <p className="text-sm text-metal">
-              <span className="font-semibold text-paper">Livraison sous 4h</span> selon
-              disponibilité et zone d&apos;intervention. Idéal pour les garages et
-              ateliers qui ont besoin d&apos;une pièce sans attendre.
+              <span className="font-semibold text-paper">Livraison sous 2h</span> dans
+              le 82, selon disponibilité et typologie de pièce. Quand vous avez besoin
+              d&apos;une pièce sans attendre.
             </p>
           </div>
 
@@ -116,7 +116,7 @@ export function ContactSection() {
         <div>
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-ink-800 px-4 py-2 text-sm text-paper">
             <Icon name="garage" className="h-4 w-4 text-signal" />
-            Réservé aux professionnels & garages
+            Professionnels & particuliers bienvenus
           </div>
           <PartRequestFormClient />
         </div>

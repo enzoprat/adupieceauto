@@ -6,7 +6,7 @@ export const site = {
   clientsCount: 20,
   baseline: "Vos pièces automobiles livrées rapidement, au bon prix.",
   shortDescription:
-    "Fournisseur de pièces automobiles et consommables pour les garages et professionnels de l'automobile à Labastide-Saint-Pierre et alentours.",
+    "Vente de pièces automobiles, consommables et outillage pour les professionnels et les particuliers à Labastide-Saint-Pierre et alentours.",
   url:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
     "https://www.adupieceauto.fr",
@@ -33,12 +33,12 @@ export const site = {
   serviceArea:
     "Labastide-Saint-Pierre, Montauban, Grisolles, Nohic, Villebrumier, Campsas, Orgueil et alentours (Tarn-et-Garonne, 82).",
   delivery: {
-    promise: "Livraison sous 4h",
+    promise: "Livraison sous 2h",
     disclaimer:
-      "Livraison sous 4h selon disponibilité, typologie de pièce et zone d'intervention.",
+      "Livraison sous 2h dans le 82 selon disponibilité et typologie de pièce.",
   },
   targetAudience:
-    "Garages automobiles, réparateurs, ateliers mécaniques, professionnels de l'entretien, petites flottes et artisans.",
+    "Professionnels de l'automobile et particuliers : garages, réparateurs, ateliers, flottes, artisans et automobilistes.",
 } as const;
 
 export type Site = typeof site;

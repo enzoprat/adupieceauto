@@ -6,7 +6,7 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Demande de pièce auto à Labastide-Saint-Pierre",
   description:
-    "Demandez une pièce auto ou un consommable à Adu Pièce Auto. Formulaire dédié aux garages et professionnels, réponse rapide sur le prix et la disponibilité. Livraison sous 4h selon disponibilité et zone.",
+    "Demandez une pièce auto, un consommable ou de l'outillage à Adu Pièce Auto. Formulaire ouvert aux professionnels comme aux particuliers, réponse rapide sur le prix et la disponibilité. Livraison sous 2h dans le 82 selon disponibilité.",
   path: "/contact",
 });
 
@@ -31,7 +31,7 @@ export default function ContactPage() {
             Votre demande traitée <span className="text-signal">rapidement</span>
           </>
         }
-        description="Garages, réparateurs, professionnels : indiquez-nous la pièce ou le consommable recherché. Nous vérifions prix et disponibilité, puis revenons vers vous dans les meilleurs délais."
+        description="Professionnels comme particuliers : indiquez-nous la pièce, le consommable ou l'outillage recherché. Nous vérifions prix et disponibilité, puis revenons vers vous dans les meilleurs délais."
         crumbs={[{ label: "Accueil", href: "/" }, { label: "Contact" }]}
       />
       <ContactSection />
