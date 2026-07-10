@@ -82,9 +82,9 @@ export function Hero() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.18 }}
             className="mt-6 max-w-xl text-[17px] leading-relaxed text-metal"
           >
-            Une pièce bloquante ? On identifie la bonne référence, on confirme le
-            prix et la disponibilité, puis on livre sous 4h selon la zone. Pièces
-            auto et consommables pour garages, ateliers et pros du Tarn-et-Garonne.
+            Pièces auto et consommables pour les garages et ateliers du
+            Tarn-et-Garonne. Bonne référence, livraison sous 4h selon
+            disponibilité et zone.
           </motion.p>
 
           <motion.div

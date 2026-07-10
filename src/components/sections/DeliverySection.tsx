@@ -37,7 +37,7 @@ export function DeliverySection() {
           </h2>
           <p className="mt-6 max-w-lg text-[16px] leading-relaxed text-metal">
             De la demande à la mise à disposition, chaque étape est traitée sans
-            temps mort. On connaît la zone, les routes et les urgences du terrain.
+            temps mort.
           </p>
 
           {/* Timeline verticale qui se remplit au scroll */}
