@@ -116,7 +116,7 @@ export function ContactSection() {
         <div>
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-ink-800 px-4 py-2 text-sm text-paper">
             <Icon name="garage" className="h-4 w-4 text-signal" />
-            Professionnels & particuliers bienvenus
+            Professionnels & particuliers
           </div>
           <PartRequestFormClient />
         </div>
