@@ -10,10 +10,10 @@ export type Proof = {
 /** Bandeau de preuves (modules, pas badges). */
 export const proofs: Proof[] = [
   {
-    label: "Livraison rapide",
-    detail: "sous 2h dans le 82",
+    label: "Livraison express",
+    detail: "commande avant 11h30 livrée l'après-midi",
     icon: "bolt",
-    fixed: "2h",
+    fixed: "2×/j",
   },
   {
     label: "Clients réguliers",

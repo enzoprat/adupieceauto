@@ -11,7 +11,7 @@ const timeline = [
   { label: "Demande reçue", meta: "T+0", icon: "mail" as const },
   { label: "Référence identifiée", meta: "T+10 min", icon: "check" as const },
   { label: "Prix & dispo confirmés", meta: "T+30 min", icon: "tag" as const },
-  { label: "Livraison ou retrait", meta: "sous 2h", icon: "bolt" as const },
+  { label: "Livraison ou retrait", meta: "l'après-midi", icon: "bolt" as const },
 ];
 
 export function DeliverySection() {
@@ -32,12 +32,12 @@ export function DeliverySection() {
         <div ref={ref}>
           <Kicker>Logistique de proximité</Kicker>
           <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-tightest text-paper sm:text-4xl lg:text-[2.75rem]">
-            Livraison <span className="text-signal">sous 2h</span> dans tout le
-            Tarn-et-Garonne.
+            Livraison <span className="text-signal">express</span>, deux fois par
+            jour.
           </h2>
           <p className="mt-6 max-w-lg text-[16px] leading-relaxed text-metal">
-            De la demande à la mise à disposition, chaque étape est traitée sans
-            temps mort.
+            Pour toute commande passée avant 11h30, vous êtes livré l&apos;après-midi
+            même — sous réserve de stock disponible.
           </p>
 
           {/* Timeline verticale qui se remplit au scroll */}

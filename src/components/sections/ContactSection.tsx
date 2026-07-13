@@ -93,9 +93,9 @@ export function ContactSection() {
           <div className="mt-5 flex items-start gap-3 rounded-2xl border border-white/10 bg-ink-800 p-4">
             <Icon name="bolt" className="mt-0.5 h-5 w-5 shrink-0 text-signal" />
             <p className="text-sm text-metal">
-              <span className="font-semibold text-paper">Livraison sous 2h</span> dans
-              le 82, selon disponibilité et typologie de pièce. Quand vous avez besoin
-              d&apos;une pièce sans attendre.
+              <span className="font-semibold text-paper">Livraison express</span>,
+              deux fois par jour. Commande avant 11h30 livrée l&apos;après-midi même,
+              sous réserve de stock disponible.
             </p>
           </div>
 

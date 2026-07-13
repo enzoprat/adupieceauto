@@ -71,7 +71,7 @@ export default function OgImage() {
               letterSpacing: "-2px",
             }}
           >
-livrés sous 2h dans le 82
+livraison express 2×/jour
           </div>
           <div style={{ color: "#9CA3AF", fontSize: "30px", marginTop: "24px" }}>
             {`${site.name} — Labastide-Saint-Pierre (82370)`}

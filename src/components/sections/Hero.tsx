@@ -52,8 +52,8 @@ export function Hero() {
           className="mt-6 max-w-xl text-[17px] leading-relaxed text-metal"
         >
           Pour les professionnels comme pour les particuliers du
-          Tarn-et-Garonne. Bonne référence, prix intéressant, livraison sous 2h
-          dans le 82.
+          Tarn-et-Garonne. Bonne référence, prix intéressant, livraison express
+          deux fois par jour.
         </motion.p>
 
         <motion.div

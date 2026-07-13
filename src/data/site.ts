@@ -33,9 +33,9 @@ export const site = {
   serviceArea:
     "Labastide-Saint-Pierre, Montauban, Grisolles, Nohic, Villebrumier, Campsas, Orgueil et alentours (Tarn-et-Garonne, 82).",
   delivery: {
-    promise: "Livraison sous 2h",
+    promise: "Livraison express",
     disclaimer:
-      "Livraison sous 2h dans le 82 selon disponibilité et typologie de pièce.",
+      "Nous livrons deux fois par jour : pour toute commande passée avant 11h30, vous êtes livré l'après-midi même, sous réserve de stock disponible.",
   },
   targetAudience:
     "Professionnels de l'automobile et particuliers : garages, réparateurs, ateliers, flottes, artisans et automobilistes.",
