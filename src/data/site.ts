@@ -9,7 +9,7 @@ export const site = {
     "Vente de pièces automobiles, consommables et outillage pour les professionnels et les particuliers à Labastide-Saint-Pierre et alentours.",
   url:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-    "https://www.adupieceauto.fr",
+    "https://adupiecesauto.fr",
   phone: {
     display: "06 02 01 34 63",
     href: "tel:+33602013463",
