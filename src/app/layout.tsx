@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     "pièces auto pour professionnels et particuliers",
     "fournisseur garage automobile",
     "pièces automobiles 82370",
-    "Adu Pièce Auto",
+    "Adu Pièces Auto",
     "L'Atelier de l'Utilitaire",
   ],
   robots: { index: true, follow: true },

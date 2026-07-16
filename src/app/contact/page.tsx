@@ -6,7 +6,7 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Demande de pièce auto à Labastide-Saint-Pierre",
   description:
-    "Demandez une pièce auto, un consommable ou de l'outillage à Adu Pièce Auto. Formulaire ouvert aux professionnels comme aux particuliers, réponse rapide sur le prix et la disponibilité. Livraison express deux fois par jour : commande avant 11h30 livrée l'après-midi même, sous réserve de stock.",
+    "Demandez une pièce auto, un consommable ou de l'outillage à Adu Pièces Auto. Formulaire ouvert aux professionnels comme aux particuliers, réponse rapide sur le prix et la disponibilité. Livraison express deux fois par jour : commande avant 11h30 livrée l'après-midi même, sous réserve de stock.",
   path: "/contact",
 });
 

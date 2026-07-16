@@ -9,7 +9,7 @@ export type BrandFamily = {
 };
 
 /**
- * Marques référencées par Adu Pièce Auto, regroupées par besoin.
+ * Marques référencées par Adu Pièces Auto, regroupées par besoin.
  * Le fournisseur sélectionne l'équipementier adapté selon la pièce,
  * la disponibilité et le véhicule.
  */

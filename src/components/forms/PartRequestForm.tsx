@@ -61,7 +61,7 @@ export function PartRequestForm({
     const payload = {
       access_key: accessKey,
       subject: `Nouvelle demande de pièce — ${fd.get("name")}`,
-      from_name: "Site Adu Pièce Auto",
+      from_name: "Site Adu Pièces Auto",
       replyto: (fd.get("email") as string) || undefined,
       Nom: fd.get("name"),
       "Société / garage": fd.get("company"),

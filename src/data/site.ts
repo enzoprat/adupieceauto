@@ -1,5 +1,5 @@
 export const site = {
-  name: "Adu Pièce Auto",
+  name: "Adu Pièces Auto",
   legalName: "L'Atelier de l'Utilitaire",
   founder: "GG",
   founded: 2019,
